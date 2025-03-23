@@ -15,7 +15,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__, static_folder='../frontend', template_folder='../frontend')
-CORS(app, origins=["https://social-media-downloader-9m4.pages.dev"])
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
 def index():
