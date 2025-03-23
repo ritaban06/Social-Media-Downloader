@@ -1,5 +1,6 @@
 
 from flask import Flask, request, send_file, send_from_directory, jsonify
+from flask_cors import CORS
 import yt_dlp
 import instaloader
 import os
@@ -14,6 +15,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__, static_folder='../frontend', template_folder='../frontend')
+CORS(app, origins=["https://social-media-downloader-9m4.pages.dev"])
 
 @app.route('/')
 def index():
