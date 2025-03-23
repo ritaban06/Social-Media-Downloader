@@ -57,6 +57,7 @@ def check_media():
         'format': 'best',
         'noplaylist': True,
         'quiet': True,
+        'cookies-from-browser': 'chrome'
     }
     try:
         with yt_dlp.YoutubeDL(options) as ydl:
