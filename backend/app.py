@@ -184,5 +184,4 @@ def download_video():
         return jsonify({"error": str(e)}), 400
 
 if __name__ == '__main__':
-    logger.info("Starting Flask app")
-    app.run(debug=True)
+    logger.info("Starting Flask app with Gunicorn")
