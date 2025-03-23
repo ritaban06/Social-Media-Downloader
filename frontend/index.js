@@ -1,3 +1,4 @@
+const BACKEND_URL = "https://social-media-downloader-kfo8.onrender.com";
 
 document.addEventListener('DOMContentLoaded', function() {
     // Elements
@@ -191,47 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData();
         formData.append('url', url);
         
-        // fetch('/check', {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        // .then(response => {
-        //     if (!response.ok) {
-        //         throw new Error('Failed to check media');
-        //     }
-        //     return response.json();
-        // })
-        // .then(data => {
-        //     if (data.error) {
-        //         throw new Error(data.error);
-        //     }
-            
-        //     // Reset button
-        //     checkButton.textContent = 'Check Media';
-        //     checkButton.disabled = false;
-            
-        //     // Update video info
-        //     videoTitle.textContent = data.title || 'Unknown Title';
-        //     const duration = data.duration || 0;
-        //     const minutes = Math.floor(duration / 60);
-        //     const seconds = Math.floor(duration % 60);
-        //     videoDuration.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        //     videoQuality.textContent = data.quality || 'Unknown Quality';
-        //     videoPreview.src = data.thumbnail || '';
-            
-        //     // Show result
-        //     resultContainer.classList.add('show');
-            
-        //     // Update download button text
-        //     updateDownloadButtonText();
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        //     alert('Failed to check media: ' + error.message);
-        //     checkButton.textContent = 'Check Media';
-        //     checkButton.disabled = false;
-        // });
-        fetch('/check', {
+        fetch(`${BACKEND_URL}/check`, {
             method: 'POST',
             body: formData
         })
@@ -339,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.append('url', url);
         formData.append('format', format);
         
-        fetch('/download', {
+        fetch(`${BACKEND_URL}/download`, {
             method: 'POST',
             body: formData
         })
