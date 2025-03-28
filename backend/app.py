@@ -14,13 +14,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__, static_folder='../frontend', template_folder='../frontend')
+app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
 def index():
-    logger.info("Serving index.html")
-    return send_from_directory('../frontend', 'index.html')
+    return "Media Downloader API is running"
 
 @app.route('/check', methods=['POST'])
 def check_media():
@@ -183,6 +182,3 @@ def download_video():
     except Exception as e:
         logger.exception(f"Error downloading video: {str(e)}")
         return jsonify({"error": str(e)}), 400
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
