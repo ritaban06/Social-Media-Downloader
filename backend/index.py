@@ -165,4 +165,7 @@ def download_video():
         return jsonify({"error": str(e)}), 500
 
 def handler(event, context):
-    return app
+    return app.handle_request()
+
+if __name__ == '__main__':
+    app.run()
