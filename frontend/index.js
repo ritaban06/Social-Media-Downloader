@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://social-media-downloader-kfo8.onrender.com";
+const BACKEND_URL = "https://social-media-downloader-backend.vercel.app";
 
 document.addEventListener('DOMContentLoaded', function() {
     // Elements
