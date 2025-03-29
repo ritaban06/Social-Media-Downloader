@@ -5,7 +5,6 @@ import instaloader
 import logging
 import tempfile
 import os
-from serverless_wsgi import handle_request
 
 # Configure logging
 logging.basicConfig(
@@ -165,8 +164,12 @@ def download_video():
         logger.error(f"Download error: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
-def handler(event, context):
-    return handle_request(app, event, context)
+# Remove the serverless_wsgi import and handler
+# Instead, use this simple handler for Vercel
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return app.view_functions[path]() if path in app.view_functions else index()
 
 if __name__ == '__main__':
     app.run()
