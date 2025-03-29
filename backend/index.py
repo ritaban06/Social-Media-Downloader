@@ -5,6 +5,7 @@ import instaloader
 import logging
 import tempfile
 import os
+from serverless_wsgi import handle_request
 
 # Configure logging
 logging.basicConfig(
@@ -165,7 +166,7 @@ def download_video():
         return jsonify({"error": str(e)}), 500
 
 def handler(event, context):
-    return app.handle_request()
+    return handle_request(app, event, context)
 
 if __name__ == '__main__':
     app.run()
